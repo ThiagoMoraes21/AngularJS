@@ -30,5 +30,27 @@
                 // clean the input
                 todoList.todoText = '';
             }
+
+            // count how many todos are still haven't be done
+            todoList.remaining = () => {
+                var count = 0;
+                angular.forEach(todoList.todos, (todo) => {
+                    count += todo.done ? 0:1;
+                });
+                return count;
+            }
+
+            // archive the selected todo item
+            todoList.archive = () => {
+                var oldTodos = todoList.todos;
+                todoList.todos = []; // clean the todos array
+
+                angular.forEach(oldTodos, (todo) => {
+                    if(!todo.done) {
+                        // if todo is not done push it into the todos array
+                        todoList.todos.push(todo);
+                    }
+                });
+            }
         });
 })();

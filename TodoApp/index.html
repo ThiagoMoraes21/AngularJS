@@ -16,12 +16,20 @@
             <!-- The behavior of the content are under the ng-controller 
                  and thy will be managed using TodoListController class  -->
             <div ng-controller="TodoListController as todoList">
-                <ul class="unstyled">
+                <div class="d-flex flex-row justify-content-center">
+                     <!-- count the remaining todos left -->
+                    <span class="inline-block">{{ todoList.remaining() }} of {{ todoList.todos.length }} remaining</span>
+                    [ <a href="" ng-click="todoList.archive()">Archive</a> ]
+                </div>
+                <br>
+                <ul>
+                    <!-- list all the elements of the array todos -->
                     <li ng-repeat="todo in todoList.todos">
-                        <label for="todo" class="checkbox">
+                        <label class="checkbox">
                             <input type="checkbox" ng-model="todo.done">
         
-                            <!-- If the value of todo.done is true we set the class done-true wish applies the strikethrough -->
+                            <!-- If the value of todo.done is true we set the class done-true wish
+                                 applies the strikethrough -->
                             <span class="done-{{ todo.done }}">{{ todo.text }}</span>
                         </label>
                     </li>
@@ -29,12 +37,12 @@
         
                 <!-- Intercepts form submit and instead call addTodo() method, in this method
                      we read the todoText property and insert into the todos collection -->
-                <form ng-submit="todoList.addTodo()" class="form-inline">
-                    <div class="form-group">
+                <form ng-submit="todoList.addTodo()">
+                    <div class="form-row">
                         <input type="text" ng-model="todoList.todoText" size="30"
-                        placeholder="Enter your todo here..." class="form-control">
+                                placeholder="Add a new todo here..." class="col-10">
                         
-                        <input type="submit" value="add" class="btn btn-primary">
+                        <input type="submit" value="add" class="btn btn-primary col-2">
                     </div>
                 </form>
             </div>

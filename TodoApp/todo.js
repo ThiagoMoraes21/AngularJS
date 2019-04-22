@@ -15,8 +15,13 @@
 
     angular
         .module('todoApp', [])
-        .controller('TodoListController', function() {
-            var todoList = this;
+        .controller('TodoListController', function($scope) {
+            var todoList = this; // thats the equivalent to $scope
+            // $scope.title = "Todos";
+            // $scope.description = "A list of things to do...";
+            todoList.title = 'Todos';
+            
+
             todoList.todos = [
                 {text: 'Learn AngularJS', done: false},
                 {text: 'Build a Hello World app using AngularJS', done: true}

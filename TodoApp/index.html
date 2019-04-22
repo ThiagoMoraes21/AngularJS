@@ -11,11 +11,12 @@
 </head>
 <body>
     <div class="container">
-            <h1>Todos</h1>
-
             <!-- The behavior of the content are under the ng-controller 
                  and thy will be managed using TodoListController class  -->
             <div ng-controller="TodoListController as todoList">
+                <h1>{{ todoList.title }}</h1>
+                <p>{{ description }}</p>
+
                 <div class="d-flex flex-row justify-content-center">
                      <!-- count the remaining todos left -->
                     <span class="inline-block">{{ todoList.remaining() }} of {{ todoList.todos.length }} remaining</span>

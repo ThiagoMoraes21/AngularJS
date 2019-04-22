@@ -2,12 +2,11 @@
 angular
     .module('myApp', [])
     .controller("namesCtrl", function ($scope) {
-        $scope.friends = [
-            { name: "Karl", age: 27, city: "Bangalore" },
-            { name: "Lewis", age: 55, city: "Newyork" },
-            { name: "Adarsh", age: 20, city: "London" },
-            { name: "John", age: 21, city: "Newyork" },
-            { name: "David", age: 20, city: "Chenai" },
-            { name: "Miller", age: 32, city: "Paris" }
+       $scope.people = [
+           {name: 'Thiago', age: 21, city: 'São Paulo'},
+           {name: 'Rachel', age: 17, city: 'São Paulo'},
+           {name: 'Bruna', age: 32, city: 'Curitiba'},
+           {name: 'Tamires', age: 19, city: 'Minas Gerais'},
+           {name: 'Pedro', age: 24, city: 'Bahia'}
         ];
     });  

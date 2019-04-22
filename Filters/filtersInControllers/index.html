@@ -1,0 +1,31 @@
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Filters inside Controllers</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container" ng-controller="FilterController">
+        <div>
+            All entries:
+            <!-- <span ng-repeat="entry in names"> {{entry.name}} </span> -->
+            <ul ng-repeat="entry in names">
+                <li>{{ entry.name }}</li>
+            </ul>
+        </div>
+        <div>
+            <input type="text" placeholder="enter the filter" ng-model="nameFilter">
+            <br><br>
+            Entries that contain an "{{ nameFilter }}":
+            <!-- <span ng-repeat="entry in filteredArray"> {{entry.name}} </span> -->
+            <ul ng-repeat="entry in filteredArray(nameFilter)">
+                <li>{{ entry.name }}</li>
+            </ul>
+        </div>
+    </div>
+    
+</body>
+</html>

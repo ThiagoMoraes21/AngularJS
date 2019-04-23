@@ -4,12 +4,17 @@
     angular
         .module('FileInput', [])
         .component('fileInput', {
-            template:`<div class="file-loading"> 
-                         <input id="input-b6" name="input-b6[]" type="file" class="file" multiple ng-init="ctrl.fileInput()">
-                      </div>`,
+            template:`<div class="panel-body">
+                         <h3><span class="fa fa-mail-forward"></span> File Input</h3>
+                         <p>Add class <code>file</code> to file input to get Bootstrap FileInput plugin</p>
+                         <div class="file-loading"> 
+                            <input id="input-b6" name="input-b6[]" type="file" 
+                                class="file" multiple ng-init="ctrl.fileInput()">
+                         </div>
+                    </div>`,
             //templateUrl: 'templateUrl',
             controller: FileInputController,
-            controllerAs: 'ctrl',
+            controllerAs: 'ctrl'
         });
 
     function FileInputController() {

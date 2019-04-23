@@ -25,7 +25,9 @@
                 showUpload: true,
                 dropZoneEnabled: false,
                 maxFileCount: 10,
-                mainClass: "input-group-md"
+                mainClass: "input-group-md",
+                theme: "fas",
+                uploadUrl: "/file-upload-batch/2"
             });
         }
 

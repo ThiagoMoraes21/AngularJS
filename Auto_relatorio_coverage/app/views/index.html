@@ -5,16 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Relatório coverage area</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script type="text/javascript" src="../controllers/main.controller.js"></script>
+    <script type="text/javascript" src="../directives/main.component.js"></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" href="../public/css/style.css">
 </head>
 <body>
-    <div class="container" ng-controller="mainController">
-        <div id="top">top</div>
-        <back-to-top></back-to-top>
+    <div ng-controller="mainCtrl">
+        <div class="container">
+            <div id="top">top</div>
+            <back-to-top></back-to-top>
+        </div>
     </div>
-
+        
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -24,7 +29,5 @@
     <!-- Templates -->
     <!-- <script type="text/javascript" src="raphael-min.js"></script>
     <script type="text/javascript" src="morris.min.js"></script> -->
-    <script type="text/javascript" src="../controllers/main.controller.js"></script>
-    <script type="text/javascript" src="../directives/main.component.js"></script>
 </body>
 </html>

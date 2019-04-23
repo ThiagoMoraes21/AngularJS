@@ -1,10 +1,10 @@
-(function() {
+(function (angular) {
     'use strict';
 
     angular
-        .module('Relatorio', [])
-        .controller('mainController', ['$scope', 'backToTop', function($scope){
+        .module('Relatorio', ['AnchorScroll'])
+        .controller('mainCtrl', ['$scope', function ($scope){
             
         }]);
 
-})();
+})(window.angular);

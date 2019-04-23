@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('Relatorio', ['AnchorScroll', 'FileInput'])
+        .module('Relatorio', ['ScrollTop', 'ScrollBottom', 'FileInput'])
         .controller('mainCtrl', ['$scope', function ($scope){
         }]);
 

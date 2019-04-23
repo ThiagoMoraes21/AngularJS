@@ -2,18 +2,18 @@
     'use strict';
 
     angular
-        .module('AnchorScroll', [])
+        .module('ScrollTop', [])
         .run(['$anchorScroll', function($anchorScroll) {
             $anchorScroll.yOffset = 50;   // always scroll by 50 extra pixels
           }])
-          .component('backToTop', {
+          .component('scrollTop', {
                 controller: function backToTopController($scope, $location, $anchorScroll){
                   var ctrl = this;
                   ctrl.backToTop = function() {
                       $anchorScroll();
                   }
                 },
-                template: `<div class="back-to-top" ng-click="ctrl.backToTop()">
+                template: `<div class="scroll scroll-top" ng-click="ctrl.backToTop()">
                             <a href=""><i class="fas fa-arrow-up"></i></a>
                         </div>`,
                 controllerAs: 'ctrl'

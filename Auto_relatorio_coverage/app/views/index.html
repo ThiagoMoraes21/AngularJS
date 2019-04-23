@@ -4,30 +4,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Relatório coverage area</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
-    <script type="text/javascript" src="../controllers/main.controller.js"></script>
-    <script type="text/javascript" src="../directives/main.component.js"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="../kartik-v-bootstrap-fileinput/css/fileinput.min.css">
+    <link rel="stylesheet" href="../kartik-v-bootstrap-fileinput/css/fileinput-rtl.min.css">
     <link rel="stylesheet" href="../public/css/style.css">
+    
+    <!-- Angular scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script type="text/javascript" src="../controllers/main.controller.js"></script>
+    <script type="text/javascript" src="../directives/components/scroll-top.component.js"></script>
+    <script type="text/javascript" src="../directives/components/file-input.component.js"></script>
 </head>
 <body>
     <div ng-controller="mainCtrl">
         <div class="container">
-            <div id="top">top</div>
+            <div class="row">
+                <div class="col-12">
+                    <file-input></file-input>
+                </div>
+            </div>
             <back-to-top></back-to-top>
         </div>
     </div>
         
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-    <!-- Templates -->
-    <!-- <script type="text/javascript" src="raphael-min.js"></script>
-    <script type="text/javascript" src="morris.min.js"></script> -->
+    <!-- Bootstrap file input -->
+    <script src="../kartik-v-bootstrap-fileinput/js/plugins/purify.min.js"></script>
+    <script src="../kartik-v-bootstrap-fileinput/js/plugins/sortable.min.js"></script>
+    <script src="../kartik-v-bootstrap-fileinput/js/plugins/piexif.min.js"></script>
+    <script src="../kartik-v-bootstrap-fileinput/js/fileinput.min.js"></script>
 </body>
 </html>

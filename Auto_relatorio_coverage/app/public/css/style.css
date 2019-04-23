@@ -1,5 +1,6 @@
-body {
+body, html {
     height: 2000px;
+    scroll-behavior: smooth;
 }
 
 .back-to-top {

@@ -15,7 +15,8 @@
     function scrollBottomController($scope, $location, $anchorScroll) {
         var ctrl = this;
         ctrl.scrollBottom = function () {
-            $('html, body').animate({ scrollTop: $(document).height() }, 0);
+            // $('html, body').animate({ scrollTop: $(document).height() }, 0);
+            window.scrollTo(0, document.body.scrollHeight);
         }
     }
 

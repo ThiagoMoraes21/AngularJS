@@ -2,9 +2,7 @@
 
 angular
     .module('FileInput', ['FileReader'])
-    .directive('fileInput', ['fileReader', fileInput]);
-
-fileInput.$inject = ['$scope'];
+    .directive('fileInput', ['fileReader', '$parse', fileInput]);
 
 function fileInput($parse) {
     return {
@@ -30,27 +28,33 @@ function fileInput($parse) {
              
             element.bind('change', updateModel);
 
+            scope.$on("fileProgress", function (e, progress) {
+                ctrl.progress = progress.loaded / progress.total;
+            });
+
         },
-        controller: fileInputController
+        controller: fileInputController,
+        controllerAs: 'ctrl'
     };
 
     function fileInputController(fileReader) {
-        $scope.getFile = function () {
-        $scope.progress = 0;
-        fileReader.readAsDataUrl($scope.file, $scope)
+        var ctrl = this;
+        ctrl.getFile = function () {
+        ctrl.progress = 0;
+        fileReader.readAsDataUrl(ctrl.file, ctrl)
                       .then(function(result) {
-                          $scope.imageSrc = result;
+                          ctrl.imageSrc = result;
                       });
         };
      
-        $scope.$on("fileProgress", function(e, progress) {
-            $scope.progress = progress.loaded / progress.total;
-        });
+    //     ctrl.$on("fileProgress", function(e, progress) {
+    //         ctrl.progress = progress.loaded / progress.total;
+    //     });
 
-        $scope.readFile = function () {            
-            fileReader.readAsDataUrl($scope.file, $scope)
+        ctrl.readFile = function () {            
+            fileReader.readAsDataUrl(ctrl.file, ctrl)
                         .then(function(result) {
-                            $scope.imageSrc = result;
+                            ctrl.imageSrc = result;
                         });
         };
     }

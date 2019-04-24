@@ -17,13 +17,21 @@
     <script type="text/javascript" src="../directives/components/scroll-top.component.js"></script>
     <script type="text/javascript" src="../directives/components/scroll-bottom.component.js"></script>
     <script type="text/javascript" src="../directives/components/file-input.component.js"></script>
+    <script type="text/javascript" src="../directives/file-input.directive.js"></script>
+    <script type="text/javascript" src="../services/file-reader.service.js"></script>
 </head>
 <body>
     <div ng-controller="mainCtrl">
         <div class="container">
             <div class="row">
-                <div class="col-12 mt-5">
+                <!-- <div class="col-12 mt-5">
                        <file-input></file-input>
+                </div> -->
+                <div class="col-12 mt3">
+                    <div file-input="file" on-change="readFile()">
+                        <input type="file">
+                    </div>
+                    <img ng-src="{{imageSrc}}"/>
                 </div>
             </div>
             <scroll-top></scroll-top>

@@ -10,6 +10,7 @@ body, html {
     text-align: center;
     position: fixed;
     line-height: 50px;
+    z-index: 1000;
 }
 
 .scroll a {

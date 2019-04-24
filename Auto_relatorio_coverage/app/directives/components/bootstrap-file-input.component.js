@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('FileInput', [])
-        .component('fileInput', {
+        .module('BootstrapFileInput', [])
+        .component('bootstrapFileInput', {
             template:`<div class="panel-body">
                          <h3><i class="fas fa-share" style="font-size: 1.2rem;"></i> File Input</h3>
                          <p>Add class <code>file</code> to file input to get Bootstrap FileInput plugin</p>

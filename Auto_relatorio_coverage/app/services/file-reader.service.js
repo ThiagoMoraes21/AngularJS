@@ -1,15 +1,23 @@
+/*
+    Angular service that wraps the FileReader and transforms an evented API into a promise API.
+    The service only exposes a single method (readAsDataUrl). The rest of the FileReader methods
+    are omitted for brevity, but they follow the same pattern.
+*/
+
 (function (module) {
      
     var fileReader = function ($q, $log) {
- 
+        // resolves a promise
         var onLoad = function(reader, deferred, scope) {
             return function () {
+                // propagate the promise results
                 scope.$apply(function () {
                     deferred.resolve(reader.result);
                 });
             };
         };
  
+        // rejects a promise
         var onError = function (reader, deferred, scope) {
             return function () {
                 scope.$apply(function () {

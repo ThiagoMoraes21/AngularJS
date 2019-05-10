@@ -1,6 +1,6 @@
 angular
     .module('QuickViewModule', [])
-    .component('quickView', {
+    .component('kmKpi', {
         template: '',
         controller: quickViewController
     });

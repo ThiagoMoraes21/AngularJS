@@ -1,0 +1,120 @@
+<html lang="en" ng-app="Relatorio">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Relatório coverage area</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="../kartik-v-bootstrap-fileinput/css/fileinput.min.css">
+    <link rel="stylesheet" href="../kartik-v-bootstrap-fileinput/css/fileinput-rtl.min.css">
+    <link rel="stylesheet" href="../public/css/theme-default.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    
+    <!-- Angular scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+    <script type="text/javascript" src="../controllers/main.controller.js"></script>
+    <script type="text/javascript" src="../directives/components/scroll-top.component.js"></script>
+    <script type="text/javascript" src="../directives/components/scroll-bottom.component.js"></script>
+    <script type="text/javascript" src="../directives/components/bootstrap-file-input.component.js"></script>
+    <script type="text/javascript" src="../directives/components/file-input.component.js"></script>
+    <script type="text/javascript" src="../directives/components/quick-view.component.js"></script>
+    <script type="text/javascript" src="../services/file-reader.service.js"></script>
+</head>
+<body>
+    <div ng-controller="mainCtrl">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mt-5">
+                    <bootstrap-file-input></bootstrap-file-input>
+                </div>
+
+                <div class="col-12 mt-5">
+                    <img ng-src="{{ imageSrc }}"/>
+                    <div file-input="file" on-change="readFile()"></div>
+                </div>
+                <br><br>
+
+                <!--------- Quick View --------------->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div ng-repeat="card in cards" ng-if="$index % 4 == 0" class="row">
+                            <km-kpi 
+                                ng-if="$index != null && $index != undefined"
+                                name="cards[$index].name"
+                                serie="cards[$index].serie"
+                                model="cards[$index].model" 
+                                pv="cards[$index].pv"
+                                average="cards[$index].av">
+                            </km-kpi>
+                            <km-kpi 
+                                ng-if="$index != null && $index != undefined"
+                                name="cards[$index + 1].name"
+                                serie="cards[$index + 1].serie"
+                                model="cards[$index + 1].model" 
+                                pv="cards[$index + 1].pv"
+                                average="cards[$index + 1].av">
+                            </km-kpi>
+                            <km-kpi 
+                                ng-if="$index != null && $index != undefined"
+                                name="cards[$index + 2].name"
+                                serie="cards[$index + 2].serie"
+                                model="cards[$index + 2].model" 
+                                pv="cards[$index + 2].pv"
+                                average="cards[$index + 2].av">
+                            </km-kpi>
+                            <km-kpi 
+                                ng-if="$index != null && $index != undefined"
+                                name="cards[$index + 3].name"
+                                serie="cards[$index + 3].serie"
+                                model="cards[$index + 3].model" 
+                                pv="cards[$index + 3].pv"
+                                average="cards[$index + 3].av">
+                            </km-kpi>
+                            
+                        </div>
+                    </div> 
+                </div>
+
+
+                <!-- <file-input></file-input> -->
+                <!-- <i class="fas fa-print"></i> -->
+                
+                <!-- <div class="row">
+                    <div class="col-md-12">
+                        <div ng-repeat="card of cards">
+                            <div class="widget widget-default widget-item-icon">
+                                <div class="widget-item-left">
+                                    <i class="fas fa-print"></i>
+                                </div>                             
+                                <div class="widget-data">
+                                    <div class="widget-title">{{card.name}}</div>
+                                    <div class="widget-subtitle">Série: {{card.serie}}</div>
+                                    <div class="widget-subtitle">Modelo: {{card.modelo}}</div>
+                                    <div class="widget-subtitle">Pv: {{card.pv}}</div>
+                                    <div class="widget-subtitle">{{card.avg}}</div>
+                                </div>      
+                            </div>  
+                        </div>
+                    </div>
+                </div>      -->
+
+            </div>
+            <scroll-top></scroll-top>
+            <scroll-bottom></scroll-bottom>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Bootstrap-file-input -->
+    <script src="../kartik-v-bootstrap-fileinput/js/plugins/purify.min.js"></script>
+    <script src="../kartik-v-bootstrap-fileinput/js/plugins/sortable.min.js"></script>
+    <script src="../kartik-v-bootstrap-fileinput/js/plugins/piexif.min.js"></script>
+    <script src="../kartik-v-bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script src="../kartik-v-bootstrap-fileinput/themes/fas/theme.js"></script>
+</body>
+</html>

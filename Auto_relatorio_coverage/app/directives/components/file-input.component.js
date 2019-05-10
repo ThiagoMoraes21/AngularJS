@@ -3,60 +3,63 @@
 angular
     .module('FileInput', ['FileReader'])
     .directive('fileInput', ['fileReader', '$parse', fileInput]);
-
-function fileInput($parse) {
+    
+function fileInput ($parse) {
     return {
         restrict: "EA",
-        template: `<div class="col-12 mt-5">
-                        <img ng-src="{{ imageSrc }}"/>
-                        <div on-change="readFile()">
-                            <input type="file" />
-                        </div>
-                    </div>`,
+        template: `<input type="file">`,
         replace: true,          
-        link: function (scope, element, attrs) {
-            var modelGet = $parse(attrs.fileInput);
-            var modelSet = modelGet.assign;
-            var onChange = $parse(attrs.onChange);
- 
-            var updateModel = function () {
-                scope.$apply(function () {
-                    modelSet(scope, element[0].files[0]);
-                    onChange(scope);
-                });                    
-            };
-             
-            element.bind('change', updateModel);
-
-            scope.$on("fileProgress", function (e, progress) {
-                ctrl.progress = progress.loaded / progress.total;
-            });
-
-        },
-        controller: fileInputController,
-        controllerAs: 'ctrl'
+        link: link,
+        // controller: fileInputController,
+        // controllerAs: 'scope'
     };
 
+    function link(scope, element, attrs) {
+        // var modelGet = $parse.readAsDataUrl(attrs.$$element["0"].children[1].children["0"]);
+        var modelGet = $parse(attrs.fileInput)
+        var modelSet = modelGet.assign;
+        var onChange = $parse(attrs.onChange);
+
+        var updateModel = function () {
+            scope.$apply(function () {
+                modelSet(scope, element[0].files[0]);
+                onChange(scope);
+            });                    
+        };
+             
+        element.bind('change', updateModel);
+
+        // scope.$on("fileProgress", function (e, progress) {
+        //     console.log('Event: '+ e);
+        //     console.log('Progress: ' + progress)
+        //     scope.progress = progress.loaded / progress.total;
+        // });
+
+        // scope.readFile = function () {            
+        //     scope.progress = 0;
+        //     fileReader.readAsDataUrl(scope.file, scope)
+        //                 .then(function(result) {
+        //                     scope.imageSrc = result;
+        //                 });
+        // };
+
+    }
+
     function fileInputController(fileReader) {
-        var ctrl = this;
-        ctrl.getFile = function () {
-        ctrl.progress = 0;
-        fileReader.readAsDataUrl(ctrl.file, ctrl)
-                      .then(function(result) {
-                          ctrl.imageSrc = result;
-                      });
-        };
+        //var scope = this;
      
-    //     ctrl.$on("fileProgress", function(e, progress) {
-    //         ctrl.progress = progress.loaded / progress.total;
+    //     scope.$on("fileProgress", function(e, progress) {
+    //         scope.progress = progress.loaded / progress.total;
     //     });
 
-        ctrl.readFile = function () {            
-            fileReader.readAsDataUrl(ctrl.file, ctrl)
-                        .then(function(result) {
-                            ctrl.imageSrc = result;
-                        });
-        };
+        // scope.readFile = function () {            
+        //     scope.progress = 0;
+        //     fileReader.readAsDataUrl(scope.file, scope)
+        //                 .then(function(result) {
+        //                     scope.imageSrc = result;
+        //                 });
+        // };
     }
 };
+
 

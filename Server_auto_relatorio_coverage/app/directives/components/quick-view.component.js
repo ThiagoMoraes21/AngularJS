@@ -2,7 +2,7 @@ angular
     .module('QuickViewModule', [])
     .component('kmKpi', {
         template: `
-                <div class="widget widget-default widget-item-icon col-md-3">
+                <div class="widget widget-default widget-item-icon">
                     <div class="widget-item-left">
                         <i class="fas fa-print"></i>
                     </div>                             
@@ -11,7 +11,7 @@ angular
                         <div class="widget-subtitle">Série: {{$ctrl.serie}}</div>
                         <div class="widget-subtitle">Modelo: {{$ctrl.model}}</div>
                         <div class="widget-subtitle">Pv: {{$ctrl.pv}}</div>
-                        <div class="widget-subtitle">{{$ctrl.av}}</div>
+                        <div class="widget-subtitle"><h4><strong>{{$ctrl.av}}</strong></h4></div>
                     </div>      
                 </div>  
         `,
@@ -22,7 +22,7 @@ angular
             serie: '<',
             model: '<',
             pv: '<',
-            average: '<'
+            av: '<'
         }
     });
 

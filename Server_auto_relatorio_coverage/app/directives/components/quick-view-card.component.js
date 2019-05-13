@@ -1,5 +1,5 @@
 angular
-    .module('QuickViewModule', [])
+    .module('QuickViewCardModule', [])
     .component('kmKpi', {
         template: `
                 <div class="widget widget-default widget-item-icon">

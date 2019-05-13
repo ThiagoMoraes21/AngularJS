@@ -1,36 +1,37 @@
-(function (angular) {
-    'use strict';
 
-    angular
-        .module('Relatorio', ['ScrollTop', 'ScrollBottom', 'BootstrapFileInput',
-                 'FileReader', 'QuickViewModule'])
+angular
+    .module('Relatorio', ['ScrollTop', 'ScrollBottom', 'QuickViewCardModule'])
+    .controller('mainCtrl', ['$scope', function ($scope){
+        $scope.cards  = [
+            {"name":"KONICA", "serie": "ASD930202003", "model": "BH-2393", "pv": "789.321", "av" : "5,06"},
+            {"name":"KONICA", "serie": "ASDGA2452653", "model": "BH-2393", "pv": "123.321", "av" : "3,06"},
+            {"name":"KONICA", "serie": "JGFJFG434534", "model": "ER-3452", "pv": "789.321", "av" : "4,56"},
+            {"name":"KONICA", "serie": "3453453DG343", "model": "ASD-345", "pv": "545.212", "av" : "3,96"},
+            {"name":"KONICA", "serie": "SDFG43453535", "model": "DF-4555", "pv": "789.321", "av" : "7,06"},
+            {"name":"KONICA", "serie": "3453453DG343", "model": "ASD-345", "pv": "545.212", "av" : "4,92"},
+            {"name":"KONICA", "serie": "SDFG43453535", "model": "DF-4555", "pv": "789.321", "av" : "6,06"}
+        ];
 
-        .controller('mainCtrl', ['$scope', 'fileReader', function ($scope, fileReader){
-            $scope.cards  = [
-                {"name":"KONICA", "serie": "ASD930202003", "model": "BH-2393", "pv": "789.321", "av" : "5,09"},
-                {"name":"KONICA", "serie": "ASDGA2452653", "model": "BH-2393", "pv": "123.321", "av" : "5,09"},
-                {"name":"KONICA", "serie": "JGFJFG434534", "model": "ER-3452", "pv": "789.321", "av" : "5,09"},
-                {"name":"KONICA", "serie": "3453453DG343", "model": "ASD-345", "pv": "545.212", "av" : "5,09"},
-                {"name":"KONICA", "serie": "SDFG43453535", "model": "DF-4555", "pv": "789.321", "av" : "5,09"}
-            ];
-            $scope.getFile = function () {
-                $scope.progress = 0;
-                fileReader.readAsDataUrl($scope.file, $scope)
-                          .then(function(result) {
-                              $scope.imageSrc = result;
-                          });
-            };
-         
-            $scope.$on("fileProgress", function(e, progress) {
-                $scope.progress = progress.loaded / progress.total;
-            });
+        // calcula total de pv das impressoras
+        $scope.totalPv = function() {
+            let total = 0;
+            $scope.cards.forEach( e => {
+                total += parseInt(e.pv.replace('.', '')); // 
+            });
 
-            $scope.readFile = function () {            
-                fileReader.readAsDataUrl($scope.file, $scope)
-                          .then(function(result) {
-                                $scope.imageSrc = result;
-                            });
-            };
-        }]);
+            // retorna número formatado como 000.000.000
+            return total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.'); 
+        }
 
-})(window.angular);
+        // tira a média da area de cobertura
+        $scope.areaCobertura = function() {
+            let area = 0;
+            let total = 0;
+            $scope.cards.forEach( e => {
+                total += parseFloat(e.av); // calcula número total de av
+            });
+            area = total / $scope.cards.length; // média da area de cobertura
+            return Math.round(area * 100) / 100; // retorna número formatado como (000.00)
+        }
+
+    }]);

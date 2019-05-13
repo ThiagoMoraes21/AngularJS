@@ -17,76 +17,84 @@
     <script type="text/javascript" src="../controllers/main.controller.js"></script>
     <script type="text/javascript" src="../directives/components/scroll-top.component.js"></script>
     <script type="text/javascript" src="../directives/components/scroll-bottom.component.js"></script>
-    <script type="text/javascript" src="../directives/components/bootstrap-file-input.component.js"></script>
-    <script type="text/javascript" src="../directives/components/file-input.component.js"></script>
-    <script type="text/javascript" src="../directives/components/quick-view.component.js"></script>
-    <script type="text/javascript" src="../services/file-reader.service.js"></script>
+    <script type="text/javascript" src="../directives/components/quick-view-card.component.js"></script>
 </head>
 <body>
     <div ng-controller="mainCtrl">
         <div class="container">
             <div class="row">
-                <div class="col-12 mt-5">
-                    <bootstrap-file-input></bootstrap-file-input>
-                </div>
-
-                <div class="col-12 mt-5">
-                    <img ng-src="{{ imageSrc }}"/>
-                    <div file-input="file" on-change="readFile()"></div>
-                </div>
-                <br><br>
-
                 <!--------- Quick View --------------->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div ng-repeat="card in cards" ng-if="$index % 4 == 0">
-                            <div class="row">
-                                <km-kpi 
-                                    ng-if="cards[$index].name != null && cards[$index].name != undefined"
-                                    name="cards[$index].name"
-                                    serie="cards[$index].serie"
-                                    model="cards[$index].model" 
-                                    pv="cards[$index].pv"
-                                    av="cards[$index].av"
-                                    class="col-md-3">
-                                </km-kpi>
-                                <km-kpi 
-                                    ng-if="cards[$index + 1].name != null && cards[$index + 1].name != undefined"
-                                    name="cards[$index + 1].name"
-                                    serie="cards[$index + 1].serie"
-                                    model="cards[$index + 1].model" 
-                                    pv="cards[$index + 1].pv"
-                                    av="cards[$index + 1].av"
-                                    class="col-md-3">
-                                </km-kpi>
-                                <km-kpi 
-                                    ng-if="cards[$index + 2].name != null && cards[$index + 2].name != undefined"
-                                    name="cards[$index + 2].name"
-                                    serie="cards[$index + 2].serie"
-                                    model="cards[$index + 2].model" 
-                                    pv="cards[$index + 2].pv"
-                                    av="cards[$index + 2].av"
-                                    class="col-md-3">
-                                </km-kpi>
-                                <km-kpi 
-                                    ng-if="cards[$index + 3].name != null && cards[$index + 3].name != undefined"
-                                    name="cards[$index + 3].name"
-                                    serie="cards[$index + 3].serie"
-                                    model="cards[$index + 3].model" 
-                                    pv="cards[$index + 3].pv"
-                                    av="cards[$index + 3].av"
-                                    class="col-md-3">
-                                </km-kpi>
+                <div class="panel panel-default mt-5">
+                        <div class="panel-heading">
+                            <div class="panel-title-box">
+                                <h3>Quick View</h3>
+                                <span>Periodo: 01/01/2019 - 01/02/2019</span>
+                            </div>
+                            <ul class="panel-controls" style="margin-top: 2px;">
+                                <li>
+                                    <a href="#"><i class="fas fa-cog" style="font-size: 1.3rem; line-height: 2.2rem;"></i></a>                                                                            
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="panel-body padding-0">
+                            <div class="chart-holder" id="dashboard-donut-1" style="background-color: #f9f7f7; padding-top: 1.5rem;">
+                                    <div class="row">
+                                            <div class="col-md-12">
+                                                <div ng-repeat="card in cards" ng-if="$index % 4 == 0">
+                                                    <div class="row">
+                                                        <km-kpi 
+                                                            ng-if="cards[$index].name != null && cards[$index].name != undefined"
+                                                            name="cards[$index].name"
+                                                            serie="cards[$index].serie"
+                                                            model="cards[$index].model" 
+                                                            pv="cards[$index].pv"
+                                                            av="cards[$index].av"
+                                                            class="col-12 col-sm-6 col-lg-3">
+                                                        </km-kpi>
+                                                        <km-kpi 
+                                                            ng-if="cards[$index + 1].name != null && cards[$index + 1].name != undefined"
+                                                            name="cards[$index + 1].name"
+                                                            serie="cards[$index + 1].serie"
+                                                            model="cards[$index + 1].model" 
+                                                            pv="cards[$index + 1].pv"
+                                                            av="cards[$index + 1].av"
+                                                            class="col-12 col-sm-6 col-lg-3">
+                                                        </km-kpi>
+                                                        <km-kpi 
+                                                            ng-if="cards[$index + 2].name != null && cards[$index + 2].name != undefined"
+                                                            name="cards[$index + 2].name"
+                                                            serie="cards[$index + 2].serie"
+                                                            model="cards[$index + 2].model" 
+                                                            pv="cards[$index + 2].pv"
+                                                            av="cards[$index + 2].av"
+                                                            class="col-12 col-sm-6 col-lg-3">
+                                                        </km-kpi>
+                                                        <km-kpi 
+                                                            ng-if="cards[$index + 3].name != null && cards[$index + 3].name != undefined"
+                                                            name="cards[$index + 3].name"
+                                                            serie="cards[$index + 3].serie"
+                                                            model="cards[$index + 3].model" 
+                                                            pv="cards[$index + 3].pv"
+                                                            av="cards[$index + 3].av"
+                                                            class="col-12 col-sm-6 col-lg-3">
+                                                        </km-kpi>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        </div>
+                        
                             </div>
                         </div>
-                    </div> 
-                </div>
+                        <div class="panel-footer" style="font-size: 1.1rem; font-weight: 600;">
+                            <p style="padding: 0; margin: 0;">Total PV: {{ totalPv() }} - Total Area de Cobertura: {{ areaCobertura() }}</p>
+                        </div>
+                    </div>
 
                 <!-- <file-input></file-input> -->
-
+                
+                <scroll-top></scroll-top>
+                <scroll-bottom></scroll-bottom>
             </div>
-            <scroll-top></scroll-top>
-            <scroll-bottom></scroll-bottom>
         </div>
     </div>
 

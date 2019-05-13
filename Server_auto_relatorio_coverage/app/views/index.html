@@ -16,12 +16,49 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
     <script type="text/javascript" src="../controllers/main.controller.js"></script>
     <script type="text/javascript" src="../directives/components/scroll-top.component.js"></script>
-    <script type="text/javascript" src="../directives/components/scroll-bottom.component.js"></script>
     <script type="text/javascript" src="../directives/components/quick-view-card.component.js"></script>
 </head>
 <body>
     <div ng-controller="mainCtrl">
         <div class="container">
+            <!-- Modal -->
+            <div class="modal fade" id="filtroQuickView" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">                                        
+                            <label class="col-md-12 col-xs-12 control-label">Data início: </label>
+                            <div class="col-md-12 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fas fa-calendar-alt" style="font-size: 1.5rem; color: #fff; line-height: 2.5rem;"></i></span>
+                                    <input type="text" class="form-control datepicker" value="2014-11-01">                                            
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">                                        
+                            <label class="col-md-12 col-xs-12 control-label">Data final: </label>
+                            <div class="col-md-12 col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fas fa-calendar-alt" style="font-size: 1.5rem; color: #fff; line-height: 2.5rem;"></i></span>
+                                    <input type="text" class="form-control datepicker" value="2014-11-01">                                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal" style="border-radius: 3px;">Fechar</button>
+                    <button type="button" class="btn btn-primary" style="border-radius: 3px;">Pesquisar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
             <div class="row">
                 <!--------- Quick View --------------->
                 <div class="panel panel-default mt-5">
@@ -32,7 +69,7 @@
                             </div>
                             <ul class="panel-controls" style="margin-top: 2px;">
                                 <li>
-                                    <a href="#"><i class="fas fa-cog" style="font-size: 1.3rem; line-height: 2.2rem;"></i></a>                                                                            
+                                    <a href="#" data-toggle="modal" data-target="#filtroQuickView"><i class="fas fa-cog" style="font-size: 1.3rem; line-height: 2.2rem;"></i></a>                                                                            
                                 </li>
                             </ul>
                         </div>
@@ -86,27 +123,20 @@
                             </div>
                         </div>
                         <div class="panel-footer" style="font-size: 1.1rem; font-weight: 600;">
-                            <p style="padding: 0; margin: 0;">Total PV: {{ totalPv() }} - Total Area de Cobertura: {{ areaCobertura() }}</p>
+                            <p style="padding: 0; margin: 0;">Total PV: {{ totalPv() }} - Total Área de Cobertura: {{ areaCobertura() }}</p>
                         </div>
                     </div>
 
-                <!-- <file-input></file-input> -->
-                
                 <scroll-top></scroll-top>
-                <scroll-bottom></scroll-bottom>
             </div>
         </div>
     </div>
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <!-- Bootstrap-file-input -->
-    <script src="../kartik-v-bootstrap-fileinput/js/plugins/purify.min.js"></script>
-    <script src="../kartik-v-bootstrap-fileinput/js/plugins/sortable.min.js"></script>
-    <script src="../kartik-v-bootstrap-fileinput/js/plugins/piexif.min.js"></script>
-    <script src="../kartik-v-bootstrap-fileinput/js/fileinput.min.js"></script>
-    <script src="../kartik-v-bootstrap-fileinput/themes/fas/theme.js"></script>
+    <script type="text/javascript" src="../public/js/plugins/bootstrap-datepicker.js"></script>  
+    <script type="text/javascript" src="../public/js/plugins/plugins.js"></script> 
 </body>
 </html>

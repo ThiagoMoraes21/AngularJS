@@ -1,15 +1,15 @@
 
 angular
-    .module('Relatorio', ['ScrollTop', 'ScrollBottom', 'QuickViewCardModule'])
+    .module('Relatorio', ['ScrollTop', 'QuickViewCardModule'])
     .controller('mainCtrl', ['$scope', function ($scope){
         $scope.cards  = [
-            {"name":"KONICA", "serie": "ASD930202003", "model": "BH-2393", "pv": "789.321", "av" : "5,06"},
-            {"name":"KONICA", "serie": "ASDGA2452653", "model": "BH-2393", "pv": "123.321", "av" : "3,06"},
-            {"name":"KONICA", "serie": "JGFJFG434534", "model": "ER-3452", "pv": "789.321", "av" : "4,56"},
-            {"name":"KONICA", "serie": "3453453DG343", "model": "ASD-345", "pv": "545.212", "av" : "3,96"},
-            {"name":"KONICA", "serie": "SDFG43453535", "model": "DF-4555", "pv": "789.321", "av" : "7,06"},
-            {"name":"KONICA", "serie": "3453453DG343", "model": "ASD-345", "pv": "545.212", "av" : "4,92"},
-            {"name":"KONICA", "serie": "SDFG43453535", "model": "DF-4555", "pv": "789.321", "av" : "6,06"}
+            {"name":"KONICA 1", "serie": "ASD930202003", "model": "BH-2393", "pv": "789.321", "av" : "5,06"},
+            {"name":"KONICA 2", "serie": "ASDGA2452653", "model": "BH-2393", "pv": "123.321", "av" : "3,06"},
+            {"name":"KONICA 3", "serie": "JGFJFG434534", "model": "ER-3452", "pv": "789.321", "av" : "4,56"},
+            {"name":"KONICA 4", "serie": "3453453DG343", "model": "ASD-345", "pv": "545.212", "av" : "3,96"},
+            {"name":"KONICA 5", "serie": "SDFG43453535", "model": "DF-4555", "pv": "789.321", "av" : "7,06"},
+            {"name":"KONICA 6", "serie": "3453453DG343", "model": "ASD-345", "pv": "545.212", "av" : "4,92"},
+            {"name":"KONICA 7", "serie": "SDFG43453535", "model": "DF-4555", "pv": "789.321", "av" : "6,06"}
         ];
 
         // calcula total de pv das impressoras

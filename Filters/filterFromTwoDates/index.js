@@ -9,13 +9,14 @@ return function(items, from, to) {
     
     for (var i=0; i<items.length; i++){
         var date = new Date(items[i].invoice_date);
-        date.setDate(date.getDate() + parseInt(items[i].terms));
+        //date.setDate(date.getDate() + parseInt(items[i].terms));
         var tf = date;
         if (tf > df && tf < dt)  {
             result.push(items[i]);
         }
     }   
         console.log(items);
+        console.log(result);
     return result;
   };
 });
@@ -89,17 +90,17 @@ app.controller('ctrl1', function($scope){
     
     // get the invoice_date key from the records object and sum it to the terms key value
     // PS: thats inrelevant to the filter
-    $scope.addDays = function(stringDate,days) {
-        var date = new Date(stringDate);
-        date.setDate(date.getDate() + parseInt(days));
-        return date;
-    }
+    // $scope.addDays = function(stringDate,days) {
+    //     var date = new Date(stringDate);
+    //     date.setDate(date.getDate() + parseInt(days));
+    //     return date;
+    // }
 })
-.filter('dateRange', function() {
-    return function(records, dateKey, from, to) {
-        return records.filter(function(record) {
-            return !moment(record[dateKey], 'DD-MM-YYYY').isBefore(moment(from))
-                && !moment(record[dateKey], 'DD-MM-YYYY').isAfter(moment(to));
-        });
-    }
-})
+// .filter('dateRange', function() {
+//     return function(records, dateKey, from, to) {
+//         return records.filter(function(record) {
+//             return !moment(record[dateKey], 'DD-MM-YYYY').isBefore(moment(from))
+//                 && !moment(record[dateKey], 'DD-MM-YYYY').isAfter(moment(to));
+//         });
+//     }
+// })

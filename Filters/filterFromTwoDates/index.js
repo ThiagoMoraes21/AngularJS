@@ -1,22 +1,22 @@
-console.log("script connected!");
-
 var app = angular.module('app',[]);
-  app.filter("myfilter", function() {
-    return function(items, from, to) {
-        var df = from;
-        var dt =to;
-        var result = [];   
-       
-        for (var i=0; i<items.length; i++){
-            var date = new Date(items[i].invoice_date);
-            date.setDate(date.getDate() + parseInt(items[i].terms));
-            var tf = date;
-            if (tf > df && tf < dt)  {
-                result.push(items[i]);
-            }
-        }   
-         console.log(items);
-        return result;
+  
+// filter record array based on the inputs parameters
+app.filter("myfilter", function() {
+return function(items, from, to) {
+    var df = from;
+    var dt = to;
+    var result = [];   
+    
+    for (var i=0; i<items.length; i++){
+        var date = new Date(items[i].invoice_date);
+        date.setDate(date.getDate() + parseInt(items[i].terms));
+        var tf = date;
+        if (tf > df && tf < dt)  {
+            result.push(items[i]);
+        }
+    }   
+        console.log(items);
+    return result;
   };
 });
 
@@ -28,9 +28,9 @@ app.controller('ctrl1', function($scope){
     $scope.record = [{
             "_id": "57bdaa65ecc4b1701401fce4",
             "user": {
-            "_id": "57400c32bd07906c1308e2cf",
-            "displayName": "mani selvam"
-        },
+                "_id": "57400c32bd07906c1308e2cf",
+                "displayName": "mani selvam"
+            },
             "__v": 0,
             "created": "2016-08-24T14:08:37.555Z",
             "shipment_id": "57bda7c8ecc4b1701401fce3",
@@ -45,7 +45,7 @@ app.controller('ctrl1', function($scope){
             "user": {
             "_id": "57400c32bd07906c1308e2cf",
             "displayName": "mani selvam"
-        },
+            },
             "__v": 0,
             "created": "2016-08-24T14:08:37.555Z",
             "shipment_id": "57bda7c8ecc4b1701401fce3",
@@ -61,7 +61,7 @@ app.controller('ctrl1', function($scope){
             "user": {
             "_id": "57400c32bd07906c1308e2cf",
             "displayName": "mani selvam"
-        },
+            },
             "__v": 0,
             "created": "2016-08-24T14:08:37.555Z",
             "shipment_id": "57bda7c8ecc4b1701401fce3",
@@ -71,13 +71,12 @@ app.controller('ctrl1', function($scope){
             "supplier_name": "Jessey",
             "buyer_name": "Mani selvam .R"
         },
-
         {
             "_id": "57bdaa65ecc4b1701401fce4",
             "user": {
             "_id": "57400c32bd07906c1308e2cf",
             "displayName": "mani selvam"
-        },
+            },
             "__v": 0,
             "created": "2016-08-24T14:08:37.555Z",
             "shipment_id": "57bda7c8ecc4b1701401fce3",
@@ -88,18 +87,19 @@ app.controller('ctrl1', function($scope){
             "buyer_name": "Mani selvam .R"
         }];
     
+    // get the invoice_date key from the records object and sum it to the terms key value
+    // PS: thats inrelevant to the filter
     $scope.addDays = function(stringDate,days) {
-    var date = new Date(stringDate);
-    date.setDate(date.getDate() + parseInt(days));
-    return date;
-}
-         })
-         
-         .filter('dateRange', function() {
-        return function(records, dateKey, from, to) {
-            return records.filter(function(record) {
-                return !moment(record[dateKey], 'YYYY-MM-DD').isBefore(moment(from))
-                && !moment(record[dateKey], 'YYYY-MM-DD').isAfter(moment(to));
-            });
-        }
-    })
+        var date = new Date(stringDate);
+        date.setDate(date.getDate() + parseInt(days));
+        return date;
+    }
+})
+.filter('dateRange', function() {
+    return function(records, dateKey, from, to) {
+        return records.filter(function(record) {
+            return !moment(record[dateKey], 'DD-MM-YYYY').isBefore(moment(from))
+                && !moment(record[dateKey], 'DD-MM-YYYY').isAfter(moment(to));
+        });
+    }
+})

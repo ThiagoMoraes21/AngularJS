@@ -1,15 +1,36 @@
 
-angular
-    .module('Relatorio', ['ScrollTop', 'QuickViewCardModule'])
-    .controller('mainCtrl', ['$scope', function ($scope){
+let app = angular.module('Relatorio', ['ScrollTop', 'QuickViewCardModule']);
+    app.filter("filterCards", function() {
+        return function(items, from, to) {
+            var df = from;
+            var dt = to;
+            var result = [];   
+            
+            for (var i=0; i<items.length; i++){
+                var date = new Date(items[i].date);
+                date.setDate(date.getDate() + 1);
+                var tf = date;
+                if (tf >= df && tf <= dt)  {
+                    result.push(items[i]);
+                }
+            }   
+            console.log(items);
+            console.log(result);
+            return result;
+        };
+    });
+    app.controller('mainCtrl', ['$scope', function ($scope){
+        $scope.from = new Date(2018, 11, 01);
+        $scope.to = new Date(2019, 08, 23);
+
         $scope.cards  = [
-            {"name":"KONICA 1", "serie": "ASD930202003", "model": "BH-2393", "pv": "789.321", "av": "5,06", "data": "01/01/2019"},
-            {"name":"KONICA 2", "serie": "ASDGA2452653", "model": "BH-2393", "pv": "123.321", "av": "3,06", "data": "23/02/2019"},
-            {"name":"KONICA 3", "serie": "JGFJFG434534", "model": "ER-3452", "pv": "789.321", "av": "4,56", "data": "12/12/2018"},
-            {"name":"KONICA 4", "serie": "3453453DG343", "model": "ASD-345", "pv": "545.212", "av": "3,96", "data": "23/03/2019"},
-            {"name":"KONICA 5", "serie": "SDFG43453535", "model": "DF-4555", "pv": "789.321", "av": "7,06", "data": "06/03/2019"},
-            {"name":"KONICA 6", "serie": "3453453DG343", "model": "ASD-345", "pv": "545.212", "av": "4,92", "data": "13/05/2018"},
-            {"name":"KONICA 7", "serie": "SDFG43453535", "model": "DF-4555", "pv": "789.321", "av": "6,06", "data": "24/05/2019"}
+            {"name":"KONICA 1", "serie": "ASD930202003", "model": "BH-2393", "pv": "789.321", "av": "5,06", "date": "2019-07-01"},
+            {"name":"KONICA 2", "serie": "ASDGA2452653", "model": "BH-2393", "pv": "123.321", "av": "3,06", "date": "2019-02-20"},
+            {"name":"KONICA 3", "serie": "JGFJFG434534", "model": "ER-3452", "pv": "789.321", "av": "4,56", "date": "2019-02-13"},
+            {"name":"KONICA 4", "serie": "3453453DG343", "model": "ASD-345", "pv": "545.212", "av": "3,96", "date": "2019-07-20"},
+            {"name":"KONICA 5", "serie": "SDFG43453535", "model": "DF-4555", "pv": "789.321", "av": "7,06", "date": "2019-09-22"},
+            {"name":"KONICA 6", "serie": "3453453DG343", "model": "ASD-345", "pv": "545.212", "av": "4,92", "date": "2019-03-12"},
+            {"name":"KONICA 7", "serie": "SDFG43453535", "model": "DF-4555", "pv": "789.321", "av": "6,06", "date": "2019-07-14"}
         ];
 
         // calcula total de pv das impressoras

@@ -37,7 +37,8 @@
                             <div class="col-md-12 col-xs-12">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fas fa-calendar-alt" style="font-size: 1.5rem; color: #fff; line-height: 2.5rem;"></i></span>
-                                    <input type="text" class="form-control datepicker" value="2014-11-01" ng-model="dataInicial">                                            
+                                    <!-- <input type="date" class="form-control datepicker" name="from" ng-model="from"> -->
+                                    <input type="date" class="form-control" name="from" ng-model="from">                                            
                                 </div>
                             </div>
                         </div>
@@ -46,13 +47,15 @@
                             <div class="col-md-12 col-xs-12">
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="fas fa-calendar-alt" style="font-size: 1.5rem; color: #fff; line-height: 2.5rem;"></i></span>
-                                    <input type="text" class="form-control datepicker" value="2014-11-01" ng-model="dataFinal">                                            
+                                    <!-- <input type="date" class="form-control datepicker"name="to" ng-model="to"> -->
+                                    <input type="date" class="form-control" name="to" ng-model="to">                                            
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" style="border-radius: 3px;">Pesquisar</button>
+                        <!-- <button type="submit" class="btn btn-primary" style="border-radius: 3px;">Pesquisar</button> -->
+                        <button type="button" class="btn btn-primary" style="border-radius: 3px;" data-dismiss="modal">Pesquisar</button>
                     </div>
                 </div>
                 </div>
@@ -64,7 +67,7 @@
                         <div class="panel-heading">
                             <div class="panel-title-box">
                                 <h3>Quick View</h3>
-                                <span>Periodo: {{ dataInicial }} - {{ dataFinal }}</span>
+                                <span>Periodo: {{ from }} - {{ to }}</span>
                             </div>
                             <ul class="panel-controls" style="margin-top: 2px;">
                                 <li>
@@ -74,51 +77,19 @@
                         </div>
                         <div class="panel-body padding-0">
                             <div class="chart-holder" id="dashboard-donut-1" style="background-color: #f9f7f7; padding-top: 1.5rem;">
-                                    <div class="row">
-                                            <div class="col-md-12">
-                                                <div ng-repeat="card in cards" ng-if="$index % 4 == 0">
-                                                    <div class="row">
-                                                        <km-kpi 
-                                                            ng-if="cards[$index].name != null && cards[$index].name != undefined"
-                                                            name="cards[$index].name"
-                                                            serie="cards[$index].serie"
-                                                            model="cards[$index].model" 
-                                                            pv="cards[$index].pv"
-                                                            av="cards[$index].av"
-                                                            class="col-12 col-sm-6 col-lg-3">
-                                                        </km-kpi>
-                                                        <km-kpi 
-                                                            ng-if="cards[$index + 1].name != null && cards[$index + 1].name != undefined"
-                                                            name="cards[$index + 1].name"
-                                                            serie="cards[$index + 1].serie"
-                                                            model="cards[$index + 1].model" 
-                                                            pv="cards[$index + 1].pv"
-                                                            av="cards[$index + 1].av"
-                                                            class="col-12 col-sm-6 col-lg-3">
-                                                        </km-kpi>
-                                                        <km-kpi 
-                                                            ng-if="cards[$index + 2].name != null && cards[$index + 2].name != undefined"
-                                                            name="cards[$index + 2].name"
-                                                            serie="cards[$index + 2].serie"
-                                                            model="cards[$index + 2].model" 
-                                                            pv="cards[$index + 2].pv"
-                                                            av="cards[$index + 2].av"
-                                                            class="col-12 col-sm-6 col-lg-3">
-                                                        </km-kpi>
-                                                        <km-kpi 
-                                                            ng-if="cards[$index + 3].name != null && cards[$index + 3].name != undefined"
-                                                            name="cards[$index + 3].name"
-                                                            serie="cards[$index + 3].serie"
-                                                            model="cards[$index + 3].model" 
-                                                            pv="cards[$index + 3].pv"
-                                                            av="cards[$index + 3].av"
-                                                            class="col-12 col-sm-6 col-lg-3">
-                                                        </km-kpi>
-                                                    </div>
-                                                </div>
-                                            </div> 
-                                        </div>
-                        
+                                <div class="row">
+                                    <div ng-repeat="card in cards | filterCards:from:to" class="col-12 col-md-4 col-lg-3">
+                                        <div class="clearfix" ng-if="$index % 4 == 0"></div>
+                                        <km-kpi 
+                                            ng-if="card.name != null && card.name != undefined"
+                                            name="card.name"
+                                            serie="card.serie"
+                                            model="card.model" 
+                                            pv="card.pv"
+                                            av="card.av">
+                                        </km-kpi>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="panel-footer" style="font-size: 1.1rem; font-weight: 600;">

@@ -33,26 +33,31 @@ let app = angular.module('Relatorio', ['ScrollTop', 'QuickViewCardModule']);
             {"name":"KONICA 7", "serie": "SDFG43453535", "model": "DF-4555", "pv": "789.321", "av": "6,06", "date": "2019-07-14"}
         ];
 
+        $scope.QuickViewCalcs = function() {
+            $scope.calcPv();
+            $scope.calcAreaCobertura();
+        
+        }
         // calcula total de pv das impressoras
-        $scope.totalPv = function() {
+        $scope.calcPv = function() {
             let total = 0;
             $scope.cards.forEach( e => {
                 total += parseInt(e.pv.replace('.', '')); // 
             });
 
             // retorna número formatado como 000.000.000
-            return total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.'); 
+            $scope.totalPv = total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.'); 
         }
 
         // tira a média da area de cobertura
-        $scope.areaCobertura = function() {
+        $scope.calcAreaCobertura = function() {
             let area = 0;
             let total = 0;
             $scope.cards.forEach( e => {
                 total += parseFloat(e.av); // calcula número total de av
             });
             area = total / $scope.cards.length; // média da area de cobertura
-            return Math.round(area * 100) / 100; // retorna número formatado como (000.00)
+            $scope.areaCobertura = Math.round(area * 100) / 100; // retorna número formatado como (000.00)
         }
 
     }]);

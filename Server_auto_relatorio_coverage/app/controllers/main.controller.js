@@ -36,7 +36,7 @@ let app = angular.module('Relatorio', ['ScrollTop', 'QuickViewCardModule']);
             $scope.calcPv();
             $scope.calcAreaCobertura();
         }
-        // calcula total de pv das impressoras
+        // calcula total de pv das impressoras 
         $scope.calcPv = function() {
             let total = 0;
             $scope.cards.forEach( e => {
@@ -57,5 +57,84 @@ let app = angular.module('Relatorio', ['ScrollTop', 'QuickViewCardModule']);
             area = total / $scope.cards.length; // média da area de cobertura
             $scope.areaCobertura = Math.round(area * 100) / 100; // retorna número formatado como (000.00)
         }
+
+
+        // simulação de dados obtidos do servidor
+        let dataTable = {
+            "devices": {
+              "content": [
+                {
+                  "id": 11,
+                  "product": "Press_1250/1250P",
+                  "printTotal": 22992612,
+                  "grandTotal": 23014202,
+                  "timeStamp": "14/05/2019 03:00",
+                  "coverageRate": [
+                    8.8,
+                    8.9,
+                    7.1,
+                    6.2,
+                    6.2,
+                    6.2,
+                    6.2,
+                    10.2,
+                    12,
+                    12,
+                    12,
+                    12,
+                    12,
+                    12,
+                    12,
+                    12,
+                    12,
+                    9.1,
+                    8.6,
+                    8.6,
+                    8.6,
+                    8.6,
+                    8.6,
+                    8.3,
+                    3.8,
+                    4.5,
+                    4.4,
+                    7.5,
+                    8.1,
+                    8.1,
+                    4.8
+                  ],
+                  "devicetId": "A4EX011040290",
+                  "dailyTotal": 21590,
+                  "avarage": 8.69032258064516
+                }
+              ],
+              "pageable": {
+                "sort": {
+                  "sorted": true,
+                  "unsorted": false,
+                  "empty": false
+                },
+                "offset": 1,
+                "pageNumber": 1,
+                "pageSize": 1,
+                "unpaged": false,
+                "paged": true
+              },
+              "last": true,
+              "totalElements": 2,
+              "totalPages": 2,
+              "size": 1,
+              "number": 1,
+              "sort": {
+                "sorted": true,
+                "unsorted": false,
+                "empty": false
+              },
+              "numberOfElements": 1,
+              "first": false,
+              "empty": false
+            },
+            "tllAvarage": 8.652688172043009,
+            "ttlPrintTotal": 64770
+          }
 
     }]);

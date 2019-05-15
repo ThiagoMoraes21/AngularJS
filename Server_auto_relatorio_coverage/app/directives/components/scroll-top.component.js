@@ -14,7 +14,7 @@
                   }
                 },
                 template: `<div class="scroll scroll-top" ng-click="ctrl.backToTop()">
-                            <a href=""><i class="fas fa-arrow-up"></i></a>
+                            <a href=""><span class="fa fa-arrow-up"></span></a>
                         </div>`,
                 controllerAs: 'ctrl'
         });

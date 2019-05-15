@@ -1,4 +1,3 @@
-
 let app = angular.module('Relatorio', ['ScrollTop', 'QuickViewCardModule']);
     app.filter("filterCards", function() {
         return function(items, from, to) {

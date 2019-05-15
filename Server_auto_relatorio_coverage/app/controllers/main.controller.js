@@ -36,7 +36,6 @@ let app = angular.module('Relatorio', ['ScrollTop', 'QuickViewCardModule']);
         $scope.QuickViewCalcs = function() {
             $scope.calcPv();
             $scope.calcAreaCobertura();
-        
         }
         // calcula total de pv das impressoras
         $scope.calcPv = function() {
